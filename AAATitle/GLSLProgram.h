@@ -17,7 +17,7 @@ public:
 	void addAttribute(const std::string &attributeName);
 	
 	//get the uniform location
-	GLuint getUniformLocation(const std::string& uniformName);
+	GLint getUniformLocation(const std::string& uniformName);
 	
 	// bind the program
 	void use();

@@ -104,8 +104,9 @@ void GLSLProgram::addAttribute(const std::string& attributeName)
 	glBindAttribLocation(_programID, _numAttributes++, attributeName.c_str());
 }
 
-GLuint GLSLProgram::getUniformLocation(const std::string& uniformName) {
-	GLuint location = glGetUniformLocation(_programID, uniformName.c_str());
+//this does not return a gluint, it actually returns a glint, meaning that it can be negative
+GLint GLSLProgram::getUniformLocation(const std::string& uniformName) {
+	GLint location = glGetUniformLocation(_programID, uniformName.c_str());
 	if (location == GL_INVALID_INDEX) {
 		fatalError("Uniform shader variable location retrieval for " + uniformName + " failed");
 	}
