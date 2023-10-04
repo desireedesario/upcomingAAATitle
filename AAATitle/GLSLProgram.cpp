@@ -97,12 +97,15 @@ void GLSLProgram::compileShaders(const std::string& vertexShaderFilePath, const 
 	compileShader(fragmentShaderFilePath, _fragmentShaderID);
 }
 
+// Adds an attribute to our shader. Should be called between comiling and linking
 void GLSLProgram::addAttribute(const std::string& attributeName)
 {
 	// the name will be a pointe to char, so c_str()
 	// ++ after num attr will add one AFTER the line of code runs
 	glBindAttribLocation(_programID, _numAttributes++, attributeName.c_str());
 }
+
+
 
 //this does not return a gluint, it actually returns a glint, meaning that it can be negative
 GLint GLSLProgram::getUniformLocation(const std::string& uniformName) {

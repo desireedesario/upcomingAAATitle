@@ -2,7 +2,7 @@
 #include <fstream>
 
 // a vector is just a wrapper around an array
-bool IOManager::readFileToBuffer(std::string filePath, std::vector<char>& buffer) {
+bool IOManager::readFileToBuffer(std::string filePath, std::vector<unsigned char>& buffer) {
 	// read in binary format
 	std::ifstream file(filePath, std::ios::binary);
 	if (file.fail()) {
@@ -28,7 +28,8 @@ bool IOManager::readFileToBuffer(std::string filePath, std::vector<char>& buffer
 
 	buffer.resize(fileSize);
 	// get the first element of buffer using the pointer of the c string
-	file.read(&(buffer[0]), fileSize);
+	// pretending its a buffer of char
+	file.read((char *) & (buffer[0]), fileSize);
 	file.close();
 
 	return true;

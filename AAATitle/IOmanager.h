@@ -11,5 +11,5 @@ public:
 	//buffer is just another name for array
 	//using a ventor of char
 	// ue & to fill in your own buffer
-	static bool readFileToBuffer(std::string filePath, std::vector<char>& buffer);
+	static bool readFileToBuffer(std::string filePath, std::vector<unsigned char>& buffer);
 };
