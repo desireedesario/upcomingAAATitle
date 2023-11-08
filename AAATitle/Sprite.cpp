@@ -10,6 +10,7 @@ Sprite::Sprite()
 
 Sprite::~Sprite()
 {
+	// clean up after uploading the buffer
 	if (_vboID != 0) {
 		glDeleteBuffers(1, &_vboID);
 	}
