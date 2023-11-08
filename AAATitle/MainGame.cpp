@@ -117,11 +117,13 @@ void MainGame::gameLoop()
 	}
 }
 
-
+// Draws the game using OpenGL
 void MainGame::drawGame()
 {
 	//_sprite.init(px, py, 1, 1);
+	// Sets the base depth to 1.0
 	glClearDepth(1.0);
+	// Clear the color and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//to make the sprite move with the mouse I am reiniting it every time
@@ -141,7 +143,7 @@ void MainGame::drawGame()
 	SDL_GL_SwapWindow(_window);
 }
 
-float inc = 0.01;
+float inc = 0.01f;
 float greeeen = 0.01;
 void MainGame::sillyDraw()
 {

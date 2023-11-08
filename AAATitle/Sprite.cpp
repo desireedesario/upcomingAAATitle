@@ -32,6 +32,7 @@ void Sprite::init(float x, float y, float width, float height) {
 	_height = height;
 
 	//generate the buffer
+	// only initialize it if it has not been generated yet
 	if (_vboID == 0) {
 		glGenBuffers(1, &_vboID);
 	}
@@ -39,13 +40,15 @@ void Sprite::init(float x, float y, float width, float height) {
 	// a list of six vertex objects for two triangles to make one quad
 	Vertex vertexData[6];
 
-	//first triangle
+	//first triangle top left
 	vertexData[0].position.x = x + width;
 	vertexData[0].position.y = y + height;
 
+	//first triangle top right
 	vertexData[1].position.x = x;
 	vertexData[1].position.y = y + height;
 
+	//first triangle bottom
 	vertexData[2].position.x = x;
 	vertexData[2].position.y = y;
 
@@ -71,9 +74,16 @@ void Sprite::init(float x, float y, float width, float height) {
 		vertexData[i].color.a = EIGHTBITCOLOR(1.0);
 	}
 	//pushes into the vertex buffer object
+	// bind the buffer: we want this buffer to be active
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
+
+	// upload the bufer data
+	// sizeof(vertexData) is how many bytes of data 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
 
+	// unbind the buffer
+	// NATHAN: why would we want to unbind the buffer?
+	// nvm, no need to hold on to the vram buffer data anymore
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
